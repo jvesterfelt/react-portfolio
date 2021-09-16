@@ -52,7 +52,7 @@ function Projects({}) {
 
     return (
         <section className="bg-light text-secondary" style={{ height: "100%", width: "100%"}}>
-            <h1>Project Category</h1>
+            <h1 className="text-dark">Project Category</h1>
             <p>Description of what this category demonstrates.</p>
             <div className="flex-row">
                 <ProjectList/>

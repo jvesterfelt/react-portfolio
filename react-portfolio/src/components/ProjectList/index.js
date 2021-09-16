@@ -17,7 +17,7 @@ function ProjectList(projects) {
                     <div className="card bg-light text-secondary">
                     <img src="" className="card-img-top" alt="new image" onClick={() => toggleModal()}/>
                     <div className="card-body">
-                            <h5 className="card-title">Project Title</h5>
+                            <h5 className="card-title text-dark">Project Title</h5>
                             <p className="card-text">Description of the project.</p>
                     </div>
                   </div>

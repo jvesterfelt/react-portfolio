@@ -1,16 +1,37 @@
 import React, {useEffect} from 'react';
 import { capitalizeFirstLetter } from '../../utils/helpers';
-import { Link } from "react-router-dom";
 
-function Nav() {
+function Nav(props) {
+  const {
+    projectCategories = [],
+    setCurrentProjectCategory,
+    currentProjectCategory,
+    contactSelected,
+    setContactSelected
+  } = props;
+
+  useEffect(() => {
+    document.title = capitalizeFirstLetter(currentProjectCategory.name);
+  }, [currentProjectCategory]);
+
     return (
 <nav className="navbar navbar-dark bg-dark">
   <form className="container-fluid justify-content-start">
-    <button className="btn btn-outline-success me-2" type="button">Home</button>
-    <button className="btn btn-sm btn-outline-secondary" type="button">Projects</button>
+          <button className="btn btn-outline-success me-2" type="button" onClick={() => setContactSelected(false)}>
+              About Me
+    </button>
+    <button className="btn btn-sm btn-outline-secondary me-2" type="button">Projects</button>
+          <button className="btn btn-sm btn-outline-secondary" type="button">
+            <span onClick={() => setContactSelected(true)}>Contact</span>
+    </button>
   </form>
 </nav>
     );
+}
+
+export default Nav;
+
+
 
     // return (
     //     <header className="flex-row px-1">
@@ -47,6 +68,3 @@ function Nav() {
     //         </nav>
     //     </header>
     // );
-}
-
-export default Nav;
