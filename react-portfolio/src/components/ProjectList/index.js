@@ -1,9 +1,40 @@
 import React, {useState} from 'react';
 import ProjectModal from "../ProjectModal";
 
-function ProjectList(projects) {
+function ProjectList({ category }) {
+    const [photos] = useState([
+        {
+            name: "Join Coin",
+            category: "HTML & CSS",
+            description: "First project encompassing html, css, javascript, web/3rd-party APIs."
+        },
+        {
+            name: "Goal Getters",
+            category: "Full-Stack",
+            description: "Second project demonstrating a scratch-built full-stack application."
+        },
+        {
+            name: "CooKit",
+            category: "MERN-Stack",
+            description: "Third project, a scratch-built MERN-stack application."
+        },
+        {
+            name: "Robot Gladiators",
+            category: "Full-Stack",
+            description: "A node.js application demonstrating the `back-end` of a full-stack application."
+        },
+        {
+            name: "Photo Port",
+            category: "MERN-Stack",
+            description: "A React application used as a primer for the MERN-stack app concepts."
+        }
+    ]);
+
+    const currentPhotos = photos.filter(photo => photo.category === category);
+    const [currentPhoto, setCurrentPhoto] = useState();
+
     const toggleModal = (image, i) => {
-        // setCurrentPhoto({ ...image, index: i });
+        setCurrentPhoto({ ...image, index: i });
         setIsModalOpen(!isModalOpen);
       }
     
@@ -11,18 +42,22 @@ function ProjectList(projects) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     
     return (
-        <div>
-            {isModalOpen && <ProjectModal onClose={toggleModal}/>}
-            <div className="flex-row">
+        <section className="container m-2 bg-light">
+            <div>
+                {isModalOpen && <ProjectModal currentPhoto={currentPhoto} onClose={toggleModal} />}
+                {currentPhotos.map((image, i) => (
+                <div className="flex-row">
                     <div className="card bg-light text-secondary">
-                    <img src="" className="card-img-top" alt="new image" onClick={() => toggleModal()}/>
-                    <div className="card-body">
-                            <h5 className="card-title text-dark">Project Title</h5>
-                            <p className="card-text">Description of the project.</p>
+                    <img key={image.name} src={require(`../../assets/images/${category}/${i}.jpg`).default} className="img-thumbnail mx-1" alt={image.name} onClick={() => toggleModal(image, i)}/>
+                        <div className="card-body">
+                            <h5 className="card-title text-dark text-center text-wrap">Project Title</h5>
+                            <p className="card-text text-center text-wrap">Description of the project.</p>
+                        </div>
                     </div>
-                  </div>
+                </div>
+                ))}
             </div>
-        </div>
+        </section>
     )
 }
 

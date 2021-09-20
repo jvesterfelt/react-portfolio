@@ -4,8 +4,10 @@ import { HiOutlineMailOpen } from "react-icons/hi"
 import { FaGithub, FaLinkedin, FaStackOverflow, FaQuestion } from 'react-icons/fa';
 import { GoDeviceMobile } from "react-icons/go";
 
+import jamieImg from "../../assets/images/JamieVesterfelt.PNG";
+
 function ContactForm() {
-    const [formState, setFormState] = useState({ name: '', email: '', message: '' });
+    const [formState, setFormState] = useState({ firstName: '', lastName: '', phone: '', email: '', github: '', linkedin: '', stackOverflow: '', comments: '' });
     const { firstName, lastName, phone, email, github, linkedin, stackOverflow, comments } = formState;
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -39,20 +41,35 @@ function ContactForm() {
     }
 
     const formStyle = {
-        width: "65%"
+        width: "80%"
     };
+    const imgSize = {
+        width: "200px",
+        height: "250px"
+    };
+    const cardStyle = {
+        width: "75%",
+        height: "250px"
+    }
 
+    const sectionStyle = {
+        width: "70%"
+    };
+    
     return (
-        <section className="container m-5">
-            <form className="m-5 flex-row justify-content-around" id="contact-form" onSubmit={handleSubmit} style={formStyle}>
-                <div className="card mb-3">
-                    {/* <img src="..." className="bg-light card-img-top" alt="..." /> */}
-                    <div className="card-body bg-secondary">
-                        <h5 className="card-title text-center text-light">Contact Me</h5>
-                        <p className="card-text text-light text-center text-wrap">If you'd like to get in contact, please leave me your contact information and any questions/comments that you have and I'll respond when I get a chance.
-                        </p>
-                    </div>
+        <section className="container" style={sectionStyle}>
+            <div className="m-5 container-fluid">
+                <div className="row g-0 justify-content-center">
+                    <img src={ jamieImg } style={imgSize} className="profile-photo rounded-start" alt="...images" />
+                    <div className="col-md-8 m-0 container">
+                        <div className="card-body bg-secondary rounded-end" style={cardStyle}>
+                            <h3 className="card-title text-center text-wrap bg-secondary text-light">Reach Out</h3>
+                            <p className="card-text text-center text-wrap bg-secondary text-light">Leave your contact information and any questions or coments and I'll respond when I get a chance. Thank you!</p>
+                        </div>
+                    </div>          
                 </div>
+            </div>
+            <form className="m-5 flex-row justify-content-around container-fluid" id="contact-form" onSubmit={handleSubmit} style={formStyle}>
                 <div className="input-group mb-2">
                     <span className="input-group-text">First and Last Name</span>
                     <input type="text" aria-label="First name" name="firstName" className="form-control me-2" defaultValue={firstName} onBlur={handleChange}/>

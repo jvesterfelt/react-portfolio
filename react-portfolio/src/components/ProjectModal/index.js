@@ -1,21 +1,22 @@
 import React from "react";
 
-const ProjectModal = () => {
+function ProjectModal({ onClose, currentPhoto }) {
+  const { name, category, description, index } = currentPhoto;
+
     return (
 <div class="modal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <img src="" className="modal-img-top" alt="new image"/>
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <img alt={category} src={require(`../../assets/images/${category}/${index}.jpg`).default} className="modal-img-top" alt="new image"/>
+              <h5 class="modal-title">{ name }</h5>
+        {/* <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> */}
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+              <p>{ description }</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onClick={onClose}>Close</button>
       </div>
     </div>
   </div>

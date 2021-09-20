@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// import logo from './logo.svg';
 import './App.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import Home from "./pages/Home";
 import Contact from "./pages/Contact";
+import About from "./components/About";
+import Projects from "./components/Projects";
 
 function App() {
   const [projectCategories] = useState([
@@ -14,14 +13,14 @@ function App() {
       description: 'Projects demonstrating purely HTML and CSS experience',
     },
     { name: 'Javascript', description: 'Projects highlighting Javascript knowledge and skills' },
-    { name: 'Node, ORM, Express', description: 'Projects focused on back-end development' },
-    { name: 'MERN', description: 'Projects centered on the MERN stack' },
+    { name: 'Full-Stack', description: 'Projects focused on back-end development' },
+    { name: 'MERN-Stack', description: 'Projects centered on the MERN stack' },
   ]);
 
   const [currentProjectCategory, setCurrentProjectCategory] = useState(projectCategories[0]);
 
   const [contactSelected, setContactSelected] = useState(false);
- 
+
   return (
       <div>
       <Nav projectCategories={projectCategories}
@@ -32,7 +31,8 @@ function App() {
       <main>
         {!contactSelected ? (
           <>
-          <Home />
+            <Projects currentProjectCategory={ currentProjectCategory }></Projects>
+            <About></About>
           </>
         ) : (
             <Contact className="container"/>
