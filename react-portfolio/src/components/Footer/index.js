@@ -15,13 +15,13 @@ function Footer() {
                 </div>
                 <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
                     <li className="ms-3">
-                        <a class="text-muted" href="#"><FaGithub/></a>
+                        <a class="text-muted" href="https://github.com/jvesterfelt"><FaGithub/></a>
                     </li>
                     <li className="ms-3">
-                        <a class="text-muted" href="#"><FaLinkedin/></a>
+                        <a class="text-muted" href="https://www.linkedin.com/in/jamie-vesterfelt"><FaLinkedin/></a>
                     </li>
                     <li className="ms-3">
-                        <a class="text-muted" href="#"><FaStackOverflow/></a>
+                        <a class="text-muted" href="https://stackexchange.com/users/21095618/jvesterfelt"><FaStackOverflow/></a>
                     </li>
                 </ul>
             </footer>

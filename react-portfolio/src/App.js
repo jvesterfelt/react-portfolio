@@ -3,7 +3,7 @@ import './App.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Contact from "./pages/Contact";
-import About from "./components/About";
+import AboutPage from "./pages/About";
 import Projects from "./components/Projects";
 
 function App() {
@@ -18,8 +18,9 @@ function App() {
   ]);
 
   const [currentProjectCategory, setCurrentProjectCategory] = useState(projectCategories[0]);
-
   const [contactSelected, setContactSelected] = useState(false);
+  const [aboutSelected, setAboutSelected] = useState(false);
+
 
   return (
       <div>
@@ -27,12 +28,19 @@ function App() {
         setCurrentProjectCategory={setCurrentProjectCategory}
         currentProjectCategory={currentProjectCategory}
         contactSelected={contactSelected}
-      setContactSelected={setContactSelected}></Nav>
+        setContactSelected={setContactSelected}
+        setAboutSelected={setAboutSelected}
+      ></Nav>
       <main>
         {!contactSelected ? (
           <>
-            <Projects currentProjectCategory={ currentProjectCategory }></Projects>
-            <About></About>
+            {!aboutSelected ? (
+              <>
+              <Projects currentProjectCategory={currentProjectCategory}></Projects>
+              </>
+            ) : (
+              <AboutPage></AboutPage>                
+            )}
           </>
         ) : (
             <Contact className="container"/>

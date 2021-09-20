@@ -6,7 +6,7 @@ function Projects({currentProjectCategory}) {
 
 
     return (
-        <section className="bg-light text-secondary" style={{ height: "100%", width: "100%"}}>
+        <section className="bg-light text-secondary">
             <h1 className="text-dark text-center text-wrap">{capitalizeFirstLetter(currentProjectCategory.name)}</h1>
             <p className="text-center text-wrap">{ currentProjectCategory.description }</p>
             <div className="flex-row">
